@@ -22,6 +22,25 @@ app.get("/repositories", (request, response) => {
   return response.json(repositories);
 });
 
+app.post("/repositories", (request, response) => {
+  const { id, title, url, tech, likes } = request.body;
+
+  const repository =
+    { 
+      id: uuid(),
+      title,
+      url,
+      tech,
+      likes: 0
+    };
+
+
+    repositories.push(repository);
+
+  return response.json(repository);
+  
+});
+
 
 app.put("/repositories/:id", (request, response) => {
   const { id } = request.params;
@@ -61,32 +80,13 @@ app.delete("/repositories/:id", (request, response) => {
     return response.status(400).json({ error: 'Repository not found'})
   }
 
-  //retirar informação de dentro do array (splice)
 
   repositories.splice(repositoryIndex, 1);
   return response.status(204).send();
 
 });
 
-app.post("/repositories", (request, response) => {
-  const { id, title, url, tech, likes } = request.body;
 
-  const repository =
-    { 
-      id: uuid(),
-      title,
-      url,
-      tech,
-      likes: 0
-    };
-
-    // método pra salvar os dados na array 
-
-    repositories.push(repository);
-
-  return response.json(repository);
-  
-});
 
 app.post("/repositories/:id/like", (request, response) => {
 
