@@ -27,10 +27,10 @@ app.post("/repositories", (request, response) => {
 
   const repository =
     { 
-      id: "uuid",
-      title: 'Desafio Node.js',
-      url: 'https://github.com/Piscinao/Challenge-GoStack-RocketSeat-Bootcamp01',
-      tech: ["Node.js", "..."],
+      id: uuid(),
+      title,
+      url,
+      tech,
       likes: 0
     };
 
@@ -44,7 +44,7 @@ app.post("/repositories", (request, response) => {
 
 app.put("/repositories/:id", (request, response) => {
   const { id } = request.params;
-  const { title, url, tech, likes } = request.body;
+  const { title, url, tech } = request.body;
 
   const repositoryIndex = repositories.findIndex(repository => repository.id === id);
   
