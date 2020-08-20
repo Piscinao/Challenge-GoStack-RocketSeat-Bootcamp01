@@ -58,7 +58,7 @@ app.post("/repositories", (request, response) => {
 app.put("/repositories/:id", validateId,  (request, response) => {
   const {id} = request.params;
   const {title, url, techs} = request.body;
-  repositoryIndex = repositories.findIndex(repositorie => repositorie.id === id);
+  repositoryIndex = repositories.findIndex(repository => repository.id === id);
 
   const newRepository = repositories[repositoryIndex]
   if(repositoryIndex < 0) {
@@ -78,7 +78,7 @@ app.put("/repositories/:id", validateId,  (request, response) => {
 app.delete("/repositories/:id", validateId, (request, response) => {
   
   const {id} = request.params;
-  repositoryIndex = repositories.findIndex(repositorie => repositorie.id === id);
+  repositoryIndex = repositories.findIndex(repository => repository.id === id);
   
   if(repositoryIndex < 0) {
     return response.status(400).json({error:'Repository not found'})
@@ -93,7 +93,7 @@ app.delete("/repositories/:id", validateId, (request, response) => {
 app.post("/repositories/:id/like", (request, response) => {
   const {id} = request.params;
   
-  const repositoryIndex = repositories.findIndex(repositorie=>repositorie.id === id);
+  const repositoryIndex = repositories.findIndex(repository=>repository.id === id);
 
   if(repositoryIndex < 0) {
     return response.status(400).json({error:'Repository not found'})
