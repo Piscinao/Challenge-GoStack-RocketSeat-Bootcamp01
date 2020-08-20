@@ -27,10 +27,10 @@ app.post("/repositories", (request, response) => {
 
   const repository =
     { 
-      id: uuid(),
-      title,
-      url,
-      tech,
+      id: "uuid",
+      title: 'Desafio Node.js',
+      url: 'https://github.com/Piscinao/Challenge-GoStack-RocketSeat-Bootcamp01',
+      tech: ["Node.js", "..."],
       likes: 0
     };
 
